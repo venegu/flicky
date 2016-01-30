@@ -1,0 +1,6 @@
+framework module Pods_Flicky {
+  umbrella header "Pods-Flicky-umbrella.h"
+
+  export *
+  module * { export * }
+}
