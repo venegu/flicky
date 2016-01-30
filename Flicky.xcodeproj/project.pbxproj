@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283466881C5C59C000FF51BB /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283466871C5C59C000FF51BB /* MovieCell.swift */; };
 		28F2A3181C5922E800706F42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A3171C5922E800706F42 /* AppDelegate.swift */; };
 		28F2A31D1C5922E800706F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31B1C5922E800706F42 /* Main.storyboard */; };
 		28F2A31F1C5922E800706F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31E1C5922E800706F42 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		283466871C5C59C000FF51BB /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		28F2A3141C5922E800706F42 /* Flicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F2A3171C5922E800706F42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28F2A31C1C5922E800706F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -35,6 +37,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		283466861C5C599100FF51BB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				283466871C5C59C000FF51BB /* MovieCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		283466891C5C59CA00FF51BB /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				28F2A3291C59237C00706F42 /* MoviesViewController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		28F2A30B1C5922E800706F42 = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +72,13 @@
 		28F2A3161C5922E800706F42 /* Flicky */ = {
 			isa = PBXGroup;
 			children = (
+				283466891C5C59CA00FF51BB /* ViewController */,
+				283466861C5C599100FF51BB /* Views */,
 				28F2A3171C5922E800706F42 /* AppDelegate.swift */,
 				28F2A31B1C5922E800706F42 /* Main.storyboard */,
 				28F2A31E1C5922E800706F42 /* Assets.xcassets */,
 				28F2A3201C5922E800706F42 /* LaunchScreen.storyboard */,
 				28F2A3231C5922E800706F42 /* Info.plist */,
-				28F2A3291C59237C00706F42 /* MoviesViewController.swift */,
 			);
 			path = Flicky;
 			sourceTree = "<group>";
@@ -137,6 +156,7 @@
 			files = (
 				28F2A3181C5922E800706F42 /* AppDelegate.swift in Sources */,
 				28F2A32A1C59237C00706F42 /* MoviesViewController.swift in Sources */,
+				283466881C5C59C000FF51BB /* MovieCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +306,7 @@
 				28F2A3281C5922E800706F42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
