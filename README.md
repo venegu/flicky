@@ -94,7 +94,9 @@ Describe any challenges encountered while building the app.
 
    - They generally provide examples of GET, POST, etc.
 
-   - __REST (Representational State Transfer)__ is an architecture for designing networked aplications where simple HTTP requests are used to make calls between machines. Think: collections of things with properties ex. Facebook users (w/properties like name, hometown, relationship status, etc.) and their posts (w/properties like time posted, # of likes, comments, etc.)
+   - __REST (Representational State Transfer)__ is an architecture for designing networked aplications where simple HTTP requests are used to make calls between machines.
+
+   - Most modern web applications have collections of things with properties ex. Facebook users (w/properties like name, hometown, relationship status, etc.) and their posts (w/properties like time posted, # of likes, comments, etc.). We use REST to manipulate these properties.
 
    - RESTful applications use HTTP requests to post data (create/update), read data, and delete data. These operations that can occur to collections of "things" with properties are known as __CRUD (Create/Read/Update/Delete)__.
 
