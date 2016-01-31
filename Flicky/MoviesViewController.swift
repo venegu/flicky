@@ -152,6 +152,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         self.tableView.reloadData()
     }
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.searchBar.showsCancelButton = true
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+        searchBar.text = ""
+        searchBar.resignFirstResponder()
+    }
 
     /*
     // MARK: - Navigation
