@@ -18,7 +18,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Refreshing action
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
@@ -47,7 +47,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")
                             
-                            self.movies = responseDictionary["results"] as! [NSDictionary]
+                            self.movies = (responseDictionary["results"] as! [NSDictionary])
                             self.tableView.reloadData()
                             
                     }
@@ -121,7 +121,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")
                             
-                            self.movies = responseDictionary["results"] as! [NSDictionary]
+                            self.movies = (responseDictionary["results"] as! [NSDictionary])
                             
                              // Reload the tableView now that there is new data
                             self.tableView.reloadData()
@@ -135,7 +135,6 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         });
         task.resume()
     }
-    
 
     /*
     // MARK: - Navigation

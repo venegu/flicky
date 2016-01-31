@@ -55,6 +55,18 @@ Describe any challenges encountered while building the app.
 
    - http://rest.elkstein.org
 
+### Progress Bars
+
+      - http://stackoverflow.com/questions/27815248/how-to-set-the-progress-tint-color-in-uiprogressview
+
+      - http://www.ioscreator.com/tutorials/progress-view-tutorial-in-ios8-with-swift
+
+      - http://rshankar.com/swift-demo-add-progress-bar/
+
+      - http://stackoverflow.com/questions/19211999/showing-a-uiprogressview-inside-or-on-top-of-a-uinavigationcontrollers-uinaviga
+
+      - http://www.devfright.com/ios-data-download-progress-bar-tutorial/
+
 ## Learning Notes
 
 ### Tables
@@ -102,6 +114,47 @@ Describe any challenges encountered while building the app.
    - Requires apps to require an HTTPS connection to prevent "leaks" by default.
 
    - New feature of iOS 9 that can be turned off by adding `NSAppTransportSecurity` to `Info.plist` although turning off this feature is strongly discouraged.
+
+### Progress Bars
+   - Initialize the progress and a timer inside the ViewController class:
+   ```swift
+   var progressView: UIProgressView?
+   var timer: NSTimer?
+
+   ```
+
+   - Have a function that creates the progress view:
+   ```swift
+   func startProgress() {
+        progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
+        progressView!.transform = CGAffineTransformScale(progressView!.transform, 2, 1)
+        progressView?.center = self.view.center
+        progressView!.trackTintColor = UIColor.grayColor()
+        progressView!.progressTintColor = UIColor.blackColor()
+        view.addSubview(progressView!)
+        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateProgress", userInfo: nil, repeats: true)
+    }
+   ```
+   - Have another function that updates the progress bar:
+   ```swift
+   func updateProgress() {
+        if progressView?.progress <= 0.90 {
+            progressView?.progress += 0.05
+        }
+        let progressValue = self.progressView?.progress
+    }
+    ```
+   - Lastly, have a function that finishes off after the data is loaded:
+   ```swift
+   func completedProgress() {
+        if progressView?.progress == 0.90 {
+            progressView?.progress += 0.05
+        }
+        let progressValue = self.progressView?.progress
+    }
+    ```
+
+    - Call them appropriately?
 
 
 ## License
