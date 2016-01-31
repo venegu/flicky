@@ -18,7 +18,7 @@ The following **optional** features are implemented:
 - [ ] User sees an error message when there's a networking error.
 - [ ] Movies are displayed using a CollectionView instead of a TableView.
 - [x] User can search for a movie.
-- [ ] All images fade in as they are loading.
+- [x] All images fade in as they are loading.
 - [ ] Customize the UI.
 
 The following **additional** features are implemented:
@@ -57,15 +57,15 @@ Describe any challenges encountered while building the app.
 
 ### Progress Bars
 
-      - http://stackoverflow.com/questions/27815248/how-to-set-the-progress-tint-color-in-uiprogressview
+   - http://stackoverflow.com/questions/27815248/how-to-set-the-progress-tint-color-in-uiprogressview
 
-      - http://www.ioscreator.com/tutorials/progress-view-tutorial-in-ios8-with-swift
+   - http://www.ioscreator.com/tutorials/progress-view-tutorial-in-ios8-with-swift
 
-      - http://rshankar.com/swift-demo-add-progress-bar/
+   - http://rshankar.com/swift-demo-add-progress-bar/
 
-      - http://stackoverflow.com/questions/19211999/showing-a-uiprogressview-inside-or-on-top-of-a-uinavigationcontrollers-uinaviga
+   - http://stackoverflow.com/questions/19211999/showing-a-uiprogressview-inside-or-on-top-of-a-uinavigationcontrollers-uinaviga
 
-      - http://www.devfright.com/ios-data-download-progress-bar-tutorial/
+   - http://www.devfright.com/ios-data-download-progress-bar-tutorial/
 
 ## Learning Notes
 
@@ -154,7 +154,7 @@ Describe any challenges encountered while building the app.
     }
     ```
 
-    - Call them appropriately?
+   - Call them appropriately?
 
 
 ## License
