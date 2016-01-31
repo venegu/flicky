@@ -24,7 +24,6 @@ The following **optional** features are implemented:
 The following **additional** features are implemented:
 
 - [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button)
-- [ ] Animation for the movie poster (fading)
 - [ ] Gradient background of gray => black
 - [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies
 - [ ] Add a view (__Watch List__) where the user can add movies they would like to watch
