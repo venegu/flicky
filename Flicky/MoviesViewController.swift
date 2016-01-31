@@ -14,9 +14,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     var movies: [NSDictionary]?
     
+    var progressView: UIProgressView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Refreshing action
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -91,9 +94,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    //
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
-        // ... Create the NSURLRequest (myRequest) ...
+        // Create the NSURLRequest (myRequest)
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -109,15 +113,25 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         )
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (data, response, error) in
+            completionHandler: { (dataOrNil, response, error) in
                 
-                // ... Use the new data to update the data source ...
+                // Use the new data to update the data source
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                            print("response: \(responseDictionary)")
+                            
+                            self.movies = responseDictionary["results"] as! [NSDictionary]
+                            
+                             // Reload the tableView now that there is new data
+                            self.tableView.reloadData()
+                            
+                            // Tell the refreshControl to stop spinning
+                            refreshControl.endRefreshing()
+                            
+                    }
+                }
                 
-                // Reload the tableView now that there is new data
-                self.tableView.reloadData()
-                
-                // Tell the refreshControl to stop spinning
-                refreshControl.endRefreshing()
         });
         task.resume()
     }
