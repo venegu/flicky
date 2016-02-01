@@ -55,6 +55,10 @@ Describe any challenges encountered while building the app.
 
    - http://rest.elkstein.org
 
+   - http://stackoverflow.com/questions/28780862/use-functions-from-other-files-in-swift-xcode
+
+   - http://stackoverflow.com/questions/25575030/how-to-convert-nsnull-to-nil-in-swift
+
 ### Progress Bars
 
    - http://stackoverflow.com/questions/27815248/how-to-set-the-progress-tint-color-in-uiprogressview
