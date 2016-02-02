@@ -21,15 +21,17 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        searchBar.delegate = self
 
         // Refreshing action
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
-        tableView.dataSource = self
-        tableView.delegate = self
-        searchBar.delegate = self
+        
         filteredMovies = movies
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -183,6 +185,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        filteredMovies = movies
         self.tableView.reloadData()
     }
 
