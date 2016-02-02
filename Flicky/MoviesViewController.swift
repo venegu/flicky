@@ -157,6 +157,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             self.movies = (responseDictionary["results"] as! [NSDictionary])
                             
                              // Reload the tableView now that there is new data
+                            self.filteredMovies = self.movies
                             self.tableView.reloadData()
                             
                             // Tell the refreshControl to stop spinning
