@@ -88,11 +88,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let overview = movie["overview"] as! String
         
         
-        let baseUrl = "http://image.tmdb.org/t/p/w500"
-        if (movie["poster_path"] is NSNull) {
-            
-        } else {
-            let posterPath = movie["poster_path"] as! String
+        let baseUrl = "http://image.tmdb.org/t/p/w150"
+        if let posterPath = movie["poster_path"] as? String {
             let imageUrl = NSURL(string: baseUrl + posterPath)
             let imageRequest = NSURLRequest(URL: imageUrl!)
             
@@ -109,10 +106,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                     print("Image was cached so just update the image")
                     cell.posterView.image = image
                 }
-            },
+                },
                 failure: { (imageRequest, imageResponse, error) -> Void in
                     // if we have a network error ... show nothing?
             })
+
+            
+        } else {
+            // no image 
+            cell.posterView.image = nil
             
         }
         
@@ -181,6 +183,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
 
     /*
