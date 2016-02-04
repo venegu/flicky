@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		28176CFC1C61A46A0058CA7E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28176CFB1C61A46A0058CA7E /* CollectionViewController.swift */; };
-		28176CFE1C61A6480058CA7E /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28176CFD1C61A6480058CA7E /* CollectionCell.swift */; };
 		283466881C5C59C000FF51BB /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283466871C5C59C000FF51BB /* MovieCell.swift */; };
+		285E22261C62FC9A00406CE6 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285E22251C62FC9A00406CE6 /* CollectionCell.swift */; };
 		28F2A3181C5922E800706F42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A3171C5922E800706F42 /* AppDelegate.swift */; };
 		28F2A31D1C5922E800706F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31B1C5922E800706F42 /* Main.storyboard */; };
 		28F2A31F1C5922E800706F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31E1C5922E800706F42 /* Assets.xcassets */; };
@@ -20,8 +20,8 @@
 
 /* Begin PBXFileReference section */
 		28176CFB1C61A46A0058CA7E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		28176CFD1C61A6480058CA7E /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		283466871C5C59C000FF51BB /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
+		285E22251C62FC9A00406CE6 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		28F2A3141C5922E800706F42 /* Flicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F2A3171C5922E800706F42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28F2A31C1C5922E800706F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -49,8 +49,8 @@
 		283466861C5C599100FF51BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				28176CFD1C61A6480058CA7E /* CollectionCell.swift */,
 				283466871C5C59C000FF51BB /* MovieCell.swift */,
+				285E22251C62FC9A00406CE6 /* CollectionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 				28F2A3181C5922E800706F42 /* AppDelegate.swift in Sources */,
 				28F2A32A1C59237C00706F42 /* MoviesViewController.swift in Sources */,
 				283466881C5C59C000FF51BB /* MovieCell.swift in Sources */,
-				28176CFE1C61A6480058CA7E /* CollectionCell.swift in Sources */,
+				285E22261C62FC9A00406CE6 /* CollectionCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
