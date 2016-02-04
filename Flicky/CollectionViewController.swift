@@ -22,6 +22,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         collectionView.dataSource = self
         collectionView.delegate = self
         
+        // Refreshing action
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
+        collectionView.insertSubview(refreshControl, atIndex: 0)
+        
         filteredMovies = movies
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -102,12 +107,53 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.movieView.image = nil
             
         }
-
         
         return cell
     }
     
-    
+    // Function run when user refreshes
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
+        // Create the NSURLRequest (myRequest)
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
+        let request = NSURLRequest(
+            URL: url!,
+            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
+            timeoutInterval: 10)
+        
+        // Configure session so that completion handler is executed on main UI thread
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, response, error) in
+                
+                // Use the new data to update the data source
+                if let data = dataOrNil {
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                            print("response: \(responseDictionary)")
+                            
+                            self.movies = (responseDictionary["results"] as! [NSDictionary])
+                            
+                            // Reload the tableView now that there is new data
+                            self.filteredMovies = self.movies
+                            self.collectionView.reloadData()
+                            
+                            // Tell the refreshControl to stop spinning
+                            refreshControl.endRefreshing()
+                            
+                    }
+                }
+                
+        });
+        task.resume()
+    }
+
     
 
     /*
