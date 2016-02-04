@@ -128,6 +128,7 @@
                     <navigationItem key="navigationItem" title="Flicky" id="kqh-Tw-YcH"/>
                     <connections>
                         <outlet property="collectionView" destination="7q1-fQ-RHa" id="Nqu-uH-UZu"/>
+                        <outlet property="searchBar" destination="cFl-Pp-bMQ" id="8bh-dt-tYP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2h-7o-qDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
