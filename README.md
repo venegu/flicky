@@ -31,8 +31,9 @@ The following **additional** features are implemented:
 - [ ] Use long press in any view to add a movie to the __Watch List__
 - [ ] Custom movie/theater related icons, buttons & launch screen
 - [ ] Use [WebView](http://stackoverflow.com/questions/31762450/ios-in-app-browser) to allow users to see more information about a movie in an online movie site and potentially purchase tickets
-- [ ] Shake for a random movie suggestion? (This might be tricky since the movies aren't saved to the device!)
+- [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?))
 - [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time)
+- [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -70,6 +71,8 @@ Describe any challenges encountered while building the app.
    - http://stackoverflow.com/questions/19211999/showing-a-uiprogressview-inside-or-on-top-of-a-uinavigationcontrollers-uinaviga
 
    - http://www.devfright.com/ios-data-download-progress-bar-tutorial/
+
+   - https://developer.apple.com/library/prerelease/ios/documentation/Foundation/Reference/NSURLConnectionDataDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLConnectionDataDelegate/
 
 ## Learning Notes
 
@@ -115,7 +118,7 @@ Describe any challenges encountered while building the app.
 
 ### App Transport Security (ATS)
 
-   - Requires apps to require an HTTPS connection to prevent "leaks" by default.
+   - Requires apps to require an HTTPS connection to prevent "leaks" (by default).
 
    - New feature of iOS 9 that can be turned off by adding `NSAppTransportSecurity` to `Info.plist` although turning off this feature is strongly discouraged.
 

@@ -19,6 +19,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" barStyle="blackTranslucent" placeholder="Search for a movie" translatesAutoresizingMaskIntoConstraints="NO" id="Tc4-7s-jWi">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="123" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rbx-gD-EdD">
@@ -91,6 +92,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" barStyle="black" placeholder="Search for a movie" translatesAutoresizingMaskIntoConstraints="NO" id="cFl-Pp-bMQ">
                                 <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7q1-fQ-RHa" customClass="CollectionCell">
