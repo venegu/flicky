@@ -74,6 +74,10 @@ Describe any challenges encountered while building the app.
 
    - https://developer.apple.com/library/prerelease/ios/documentation/Foundation/Reference/NSURLConnectionDataDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLConnectionDataDelegate/
 
+   - http://stackoverflow.com/questions/30543806/get-progress-from-datataskwithurl-in-swift
+
+   - http://stackoverflow.com/questions/23987692/showing-the-file-download-progress-with-nsurlsessiondatatask
+
 ## Learning Notes
 
 ### Tables
@@ -123,6 +127,8 @@ Describe any challenges encountered while building the app.
    - New feature of iOS 9 that can be turned off by adding `NSAppTransportSecurity` to `Info.plist` although turning off this feature is strongly discouraged.
 
 ### Progress Bars
+   - It turns out that although we are getting a lot of data - it is not enough to have an "actual" progress bar because it fetches all the data in one fell swoop, thus it doesn't show the progress bar animation when using `NSURLSession` methods (it will jump to 100%). In order to have a "progress bar load" effect I will need to create a progress bar, incrementally increment it to a specific point (maybe halfway), fetch the data, then finally finish animating the filling of rest of the bar.
+
    - Initialize the progress and a timer inside the ViewController class:
    ```swift
    var progressView: UIProgressView?
