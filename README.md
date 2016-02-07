@@ -2,7 +2,7 @@
 
 **Flicky** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **X** hours spent in total
+Time spent: **9** hours spent in total
 
 ## User Stories
 
@@ -19,7 +19,7 @@ The following **optional** features are implemented:
 - [x] Movies are displayed using a CollectionView instead of a TableView.
 - [x] User can search for a movie.
 - [x] All images fade in as they are loading.
-- [ ] Customize the UI.
+- [x] Customize the UI.
 
 The following **additional** features are implemented:
 
@@ -34,6 +34,7 @@ The following **additional** features are implemented:
 - [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?))
 - [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time)
 - [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used
+- [ ] Reload view on tap of error message
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

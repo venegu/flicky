@@ -15,12 +15,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var progressBar: UIProgressView!
     @IBOutlet weak var networkAlertView: UIView!
+
     
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
     var time: Float = 0.0
     var timer: NSTimer?
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

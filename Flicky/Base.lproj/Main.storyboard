@@ -77,10 +77,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wifiError.png" translatesAutoresizingMaskIntoConstraints="NO" id="jpJ-hL-xt3">
-                                        <rect key="frame" x="82" y="0.0" width="37" height="51"/>
+                                        <rect key="frame" x="81" y="0.0" width="38" height="51"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.23529411764705882" blue="0.19215686274509805" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7sT-ye-Eb5" appends="YES" id="w5P-Oa-tvn"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -94,13 +98,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="networkAlertView" destination="f0f-Qe-4em" id="2cV-8H-pR8"/>
+                        <outlet property="networkAlertView" destination="f0f-Qe-4em" id="3E2-hz-BUj"/>
                         <outlet property="progressBar" destination="WgC-kx-ghS" id="Q1D-AQ-5ZA"/>
                         <outlet property="searchBar" destination="Tc4-7s-jWi" id="IWu-zQ-8vy"/>
                         <outlet property="tableView" destination="rbx-gD-EdD" id="To5-Yi-coX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7sT-ye-Eb5"/>
             </objects>
             <point key="canvasLocation" x="661" y="321"/>
         </scene>
@@ -169,7 +174,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="wifiError.png" translatesAutoresizingMaskIntoConstraints="NO" id="9af-Oo-o5j">
-                                        <rect key="frame" x="82" y="0.0" width="37" height="51"/>
+                                        <rect key="frame" x="81" y="0.0" width="38" height="51"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.23529411759999999" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,6 +185,7 @@
                     <navigationItem key="navigationItem" title="Flicky" id="kqh-Tw-YcH"/>
                     <connections>
                         <outlet property="collectionView" destination="7q1-fQ-RHa" id="Nqu-uH-UZu"/>
+                        <outlet property="networkAlertView" destination="1ra-6H-5Rj" id="80B-sZ-Cr0"/>
                         <outlet property="progressBar" destination="EGR-Vg-abg" id="Ff0-VP-o2R"/>
                         <outlet property="searchBar" destination="cFl-Pp-bMQ" id="8bh-dt-tYP"/>
                     </connections>

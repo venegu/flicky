@@ -13,6 +13,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var networkAlertView: UIView!
     
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
@@ -23,7 +24,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
+        hideNetworkAlert()
         startProgress()
         
         collectionView.dataSource = self
@@ -80,6 +81,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     
     // Starting fake progress bar
     func startProgress() {
+        networkAlertView.hidden = true
         progressBar.progress = 0.0
         progressBar.trackTintColor = UIColor.grayColor()
         progressBar.progressTintColor = UIColor.whiteColor()
@@ -110,6 +112,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                 self.progressBar.alpha = 0.0
             })
         }
+    }
+    
+    func showNetworkAlert() {
+        self.networkAlertView.hidden = false
+    }
+    
+    func hideNetworkAlert() {
+        self.networkAlertView.hidden = true
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
