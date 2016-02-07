@@ -128,12 +128,16 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="EGR-Vg-abg">
+                                <rect key="frame" x="0.0" y="64" width="320" height="2"/>
+                            </progressView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flicky" id="kqh-Tw-YcH"/>
                     <connections>
                         <outlet property="collectionView" destination="7q1-fQ-RHa" id="Nqu-uH-UZu"/>
+                        <outlet property="progressBar" destination="EGR-Vg-abg" id="Ff0-VP-o2R"/>
                         <outlet property="searchBar" destination="cFl-Pp-bMQ" id="8bh-dt-tYP"/>
                     </connections>
                 </viewController>
