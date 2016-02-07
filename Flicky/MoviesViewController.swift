@@ -167,6 +167,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Function run when user refreshes
     func refreshControlAction(refreshControl: UIRefreshControl) {
+        startProgress()
         // Create the NSURLRequest (myRequest)
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
@@ -196,6 +197,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                              // Reload the tableView now that there is new data
                             self.filteredMovies = self.movies
                             self.tableView.reloadData()
+                            self.completedProgress(true)
                             
                             // Tell the refreshControl to stop spinning
                             refreshControl.endRefreshing()
