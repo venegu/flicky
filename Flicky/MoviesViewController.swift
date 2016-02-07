@@ -14,6 +14,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var networkAlertView: UIView!
     
     var movies: [NSDictionary]?
     var filteredMovies: [NSDictionary]?
@@ -23,7 +24,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        hideNetworkAlert()
         startProgress()
         
         tableView.dataSource = self
@@ -52,7 +53,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
-                if let data = dataOrNil {
+                if error != nil {
+                    self.completedProgress(false)
+                    self.showNetworkAlert()
+                } else if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")
@@ -77,6 +81,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Starting fake progress bar
     func startProgress() {
+        networkAlertView.hidden = true
         progressBar.progress = 0.0
         progressBar.trackTintColor = UIColor.grayColor()
         progressBar.progressTintColor = UIColor.whiteColor()
@@ -107,6 +112,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 self.progressBar.alpha = 0.0
             })
         }
+    }
+    
+    func showNetworkAlert() {
+        self.networkAlertView.hidden = false
+    }
+    
+    func hideNetworkAlert() {
+        self.networkAlertView.hidden = true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -185,9 +198,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
+                if error != nil {
+                    self.completedProgress(false)
+                    self.showNetworkAlert()
+                }
                 
                 // Use the new data to update the data source
-                if let data = dataOrNil {
+                else if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")

@@ -15,7 +15,7 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-- [ ] User sees an error message when there's a networking error.
+- [x] User sees an error message when there's a networking error.
 - [x] Movies are displayed using a CollectionView instead of a TableView.
 - [x] User can search for a movie.
 - [x] All images fade in as they are loading.
@@ -71,6 +71,8 @@ Describe any challenges encountered while building the app.
    - http://stackoverflow.com/questions/19211999/showing-a-uiprogressview-inside-or-on-top-of-a-uinavigationcontrollers-uinaviga
 
    - http://www.devfright.com/ios-data-download-progress-bar-tutorial/
+
+   - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIProgressView_Class/#//apple_ref/occ/instm/UIProgressView/setProgress:animated:
 
    - https://developer.apple.com/library/prerelease/ios/documentation/Foundation/Reference/NSURLConnectionDataDelegate_protocol/index.html#//apple_ref/occ/intfm/NSURLConnectionDataDelegate/
 
