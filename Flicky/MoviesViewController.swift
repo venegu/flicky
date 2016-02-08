@@ -43,6 +43,18 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         filteredMovies = movies
         
+        networkCall()
+
+        // Do any additional setup after loading the view.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func networkCall() {
+        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -75,17 +87,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 }
         })
         task.resume()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     func handleTap() {
         print("tapped")
+        networkCall()
+        hideNetworkAlert()
     }
     
     // Starting fake progress bar
@@ -189,50 +197,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Function run when user refreshes
     func refreshControlAction(refreshControl: UIRefreshControl) {
+        
         startProgress()
-        // Create the NSURLRequest (myRequest)
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
+        networkCall()
+        refreshControl.endRefreshing()
         
-        // Configure session so that completion handler is executed on main UI thread
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate:nil,
-            delegateQueue:NSOperationQueue.mainQueue()
-        )
-        
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (dataOrNil, response, error) in
-                if error != nil {
-                    self.completedProgress(false)
-                    self.showNetworkAlert()
-                }
-                
-                // Use the new data to update the data source
-                else if let data = dataOrNil {
-                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                        data, options:[]) as? NSDictionary {
-                            print("response: \(responseDictionary)")
-                            
-                            self.movies = (responseDictionary["results"] as! [NSDictionary])
-                            
-                             // Reload the tableView now that there is new data
-                            self.filteredMovies = self.movies
-                            self.tableView.reloadData()
-                            self.completedProgress(true)
-                            
-                            // Tell the refreshControl to stop spinning
-                            refreshControl.endRefreshing()
-                            
-                    }
-                }
-                
-        });
-        task.resume()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
