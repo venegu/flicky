@@ -24,6 +24,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Making search bar black ???
         searchBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 30)
         searchBar.barTintColor = UIColor.blackColor()
         searchBar.barStyle = UIBarStyle.Black
