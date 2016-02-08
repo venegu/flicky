@@ -10,7 +10,7 @@ The following **required** functionality is complete:
 
 - [x] User can view a list of movies currently playing in theaters from The Movie Database.
 - [x] Poster images are loaded using the UIImageView category in the AFNetworking library.
-- [x] User sees a loading state while waiting for the movies API. __NOTE:__ I opted out to use a UIprogressView because I felt the other ways of displaying loading state are annoying. 
+- [x] User sees a loading state while waiting for the movies API. __NOTE:__ I opted out to use a UIprogressView because I felt the other ways of displaying loading state are annoying.
 - [x] User can pull to refresh the movie list.
 
 The following **optional** features are implemented:
@@ -23,18 +23,18 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button)
-- [ ] Gradient background of gray => black
-- [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies
-- [ ] Add a view (__Watch List__) where the user can add movies they would like to watch
-- [ ] Animation when flipping between the different views mentioned previously
-- [ ] Use long press in any view to add a movie to the __Watch List__ (aka gestures~!)
-- [ ] Custom movie/theater related icons, buttons & launch screen
-- [ ] Use [WebView](http://stackoverflow.com/questions/31762450/ios-in-app-browser) to allow users to see more information about a movie in an online movie site and potentially purchase tickets
-- [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?))
-- [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time)
-- [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used
-- [ ] Reload view on tap of error message
+- [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button).
+- [x] Gradient background of black => gray.
+- [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies.
+- [ ] Add a view (__Watch List__) where the user can add movies they would like to watch. **How will I save this personalized data?**
+- [ ] Animation when flipping between the different views mentioned previously.
+- [ ] Use long press in any view to add a movie to the __Watch List__ (aka gestures~!).
+- [ ] Custom movie/theater related icons, buttons & launch screen.
+- [ ] Use [WebView](http://stackoverflow.com/questions/31762450/ios-in-app-browser) to allow users to see more information about a movie in an online movie site and potentially purchase tickets (but who does that on a phone #_#).
+- [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?)).
+- [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time).
+- [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used.
+- [x] Reload view on tap of error message.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -63,6 +63,10 @@ For the life of me I could not get a gesture to work on the error message IUView
 
    - http://stackoverflow.com/questions/25575030/how-to-convert-nsnull-to-nil-in-swift
 
+### Search Bar
+
+   - http://stackoverflow.com/questions/29274088/how-to-change-background-color-of-uisearchbar-to-black-swift
+
 ### Progress Bars
 
    - http://stackoverflow.com/questions/27815248/how-to-set-the-progress-tint-color-in-uiprogressview
@@ -82,6 +86,18 @@ For the life of me I could not get a gesture to work on the error message IUView
    - http://stackoverflow.com/questions/30543806/get-progress-from-datataskwithurl-in-swift
 
    - http://stackoverflow.com/questions/23987692/showing-the-file-download-progress-with-nsurlsessiondatatask
+
+### Tap Gestures
+
+   - http://www.avocarrot.com/blog/implement-gesture-recognizers-swift/
+
+### Gradient
+
+   - http://www.codingexplorer.com/create-uicolor-swift/
+
+   - http://www.developerdave.co.uk/2014/10/gradient-backgrounds-swift/
+
+   - http://blog.apoorvmote.com/gradient-background-uiview-ios-9-swift/
 
 ## Learning Notes
 
