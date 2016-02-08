@@ -25,10 +25,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Defining tap gesture for network alert view
         let tap = UITapGestureRecognizer()
         tap.addTarget(self, action: "handleTap")
         self.networkAlertView.addGestureRecognizer(tap)
         
+        // Hiding network alert view and starting progress bar
         hideNetworkAlert()
         startProgress()
         
@@ -53,8 +55,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    
+    // Makes request and fetches necessary data from Movie API
     func networkCall() {
-        
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -87,13 +90,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 }
         })
         task.resume()
-        
     }
     
+    // Response to network alert view tap gesture to make another network call
     func handleTap() {
         print("tapped")
         networkCall()
-        hideNetworkAlert()
     }
     
     // Starting fake progress bar
@@ -121,6 +123,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     // After data is fetched completing the fake progress bar
     // such animated much fake :'(
     func completedProgress(dataFetched : Bool?) {
+        self.hideNetworkAlert()
         timer!.invalidate()
         if(dataFetched != false) {
             progressBar.setProgress(1.0, animated: true)
@@ -131,6 +134,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    // Hiding and showing network alert view
     func showNetworkAlert() {
         self.networkAlertView.hidden = false
     }
@@ -150,6 +154,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     }
     
+    // Table View Fu
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
@@ -197,13 +202,13 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     // Function run when user refreshes
     func refreshControlAction(refreshControl: UIRefreshControl) {
-        
         startProgress()
         networkCall()
         refreshControl.endRefreshing()
-        
     }
     
+    
+    // Searching for items related to search and displaying those
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredMovies = searchText.isEmpty ? movies : movies!.filter({(movieDictionary: NSDictionary) -> Bool in
             return (movieDictionary["title"] as! String).rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
@@ -212,10 +217,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         self.tableView.reloadData()
     }
     
+    // Displaying cancel button
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
         self.searchBar.showsCancelButton = true
     }
     
+    // Returning intial data back to table view & resigning first responder when cancel is clicked
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
         searchBar.text = ""
