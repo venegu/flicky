@@ -24,13 +24,16 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 30)
+        searchBar.barTintColor = UIColor.blackColor()
+        searchBar.barStyle = UIBarStyle.Black
         
         
         // Gradient
         let color1 = UIColor.blackColor()
-        let color2 = UIColor(red: 18.0/255, green: 18.0/255, blue: 18.0/255, alpha: 1.0)
-        let color3 = UIColor(red: 36.0/255, green: 36.0/255, blue: 36.0/255, alpha: 1.0)
-        let color4 = UIColor(red: 55.0/255, green: 55.0/255, blue: 55.0/255, alpha: 1.0)
+        let color2 = UIColor(red: 20.0/255, green: 20.0/255, blue: 20.0/255, alpha: 1.0)
+        let color3 = UIColor(red: 40.0/255, green: 40.0/255, blue: 40.0/255, alpha: 1.0)
+        let color4 = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1.0)
 
         let gradientColor: [CGColor] = [color1.CGColor, color2.CGColor, color3.CGColor, color4.CGColor]
         let gradientLocations: [Float] = [0.0, 0.25, 0.75, 1.0]
