@@ -24,6 +24,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: "handleTap")
+        self.networkAlertView.addGestureRecognizer(tap)
+        
         hideNetworkAlert()
         startProgress()
         
@@ -77,6 +82,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func handleTap() {
+        print("tapped")
     }
     
     // Starting fake progress bar
