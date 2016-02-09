@@ -44,6 +44,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         gradientLayer.frame = self.view.bounds
         self.view.layer.insertSublayer(gradientLayer, atIndex: 0)
+        
+        // Defining tap gesture for network alert view
+        let tap = UITapGestureRecognizer()
+        tap.addTarget(self, action: "handleTap")
+        self.networkAlertView.addGestureRecognizer(tap)
 
         // Do any additional setup after loading the view.
         hideNetworkAlert()
@@ -64,6 +69,17 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         filteredMovies = movies
         
+        networkCall()
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    // Makes request and fetches necessary data from Movie API
+    func networkCall() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
         let request = NSURLRequest(
@@ -79,7 +95,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         
         let task: NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
-                if let data = dataOrNil {
+                if error != nil {
+                    self.completedProgress(false)
+                    self.showNetworkAlert()
+                } else if let data = dataOrNil {
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             print("response: \(responseDictionary)")
@@ -87,17 +106,18 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
                             self.movies = (responseDictionary["results"] as! [NSDictionary])
                             self.filteredMovies = self.movies
                             self.collectionView.reloadData()
-                            self.completedProgress(true);
+                            self.completedProgress(true)
+                            
                     }
                 }
         })
         task.resume()
-
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // Response to network alert view tap gesture to make another network call
+    func handleTap() {
+        print("tapped")
+        networkCall()
     }
     
     // Starting fake progress bar
@@ -125,6 +145,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // After data is fetched completing the fake progress bar
     // such animated much fake :'(
     func completedProgress(dataFetched : Bool?) {
+        self.hideNetworkAlert()
         timer!.invalidate()
         if(dataFetched != false) {
             progressBar.setProgress(1.0, animated: true)
@@ -192,44 +213,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     // Function run when user refreshes
     func refreshControlAction(refreshControl: UIRefreshControl) {
         startProgress()
-        // Create the NSURLRequest (myRequest)
-        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
-        let request = NSURLRequest(
-            URL: url!,
-            cachePolicy: NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-            timeoutInterval: 10)
-        
-        // Configure session so that completion handler is executed on main UI thread
-        let session = NSURLSession(
-            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
-            delegate:nil,
-            delegateQueue:NSOperationQueue.mainQueue()
-        )
-        
-        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
-            completionHandler: { (dataOrNil, response, error) in
-                
-                // Use the new data to update the data source
-                if let data = dataOrNil {
-                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
-                        data, options:[]) as? NSDictionary {
-                            print("response: \(responseDictionary)")
-                            
-                            self.movies = (responseDictionary["results"] as! [NSDictionary])
-                            
-                            // Reload the tableView now that there is new data
-                            self.filteredMovies = self.movies
-                            self.collectionView.reloadData()
-                            self.completedProgress(true)
-                            // Tell the refreshControl to stop spinning
-                            refreshControl.endRefreshing()
-                            
-                    }
-                }
-                
-        });
-        task.resume()
+        networkCall()
+        refreshControl.endRefreshing()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
