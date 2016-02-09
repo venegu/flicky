@@ -266,7 +266,7 @@
         <!--Navigation Controller-->
         <scene sceneID="yzU-EH-zsT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5VU-ac-88M" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MoviesNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="5VU-ac-88M" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" translucent="NO" prompted="NO"/>

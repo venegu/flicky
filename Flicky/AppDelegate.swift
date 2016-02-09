@@ -17,6 +17,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        
+        // Now Playing tab
+        let nowPlayingNavigationController = storyboard.instantiateViewControllerWithIdentifier("MoviesNavigationController") as! UINavigationController
+        let nowPlayingViewController = nowPlayingNavigationController.topViewController as! MoviesViewController
+        
+        nowPlayingViewController.endpoint = "now_playing"
+        
+        nowPlayingNavigationController.tabBarItem.title = "Now Playing"
+        nowPlayingNavigationController.tabBarItem.image = UIImage(named: "")
+        
+        // Top Rated tab
+        let topPlayingNavigationController = storyboard.instantiateViewControllerWithIdentifier("MoviesNavigationController") as! UINavigationController
+        let topPlayingViewController = topPlayingNavigationController.topViewController as! MoviesViewController
+        
+        topPlayingViewController.endpoint = "top_rated"
+        
+        topPlayingNavigationController.tabBarItem.title = "Top Rated"
+        topPlayingNavigationController.tabBarItem.image = UIImage(named: "")
+        
+        
+        // 
+        let tabBarController = UITabBarController()
+        tabBarController.viewControllers = [nowPlayingNavigationController, topPlayingNavigationController]
+        
+        UITabBar.appearance().translucent = false
+        UITabBar.appearance().barTintColor = UIColor(red: 60.0/255, green: 60.0/255, blue: 60.0/255, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor.whiteColor()
+        
+        // Setting 
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
+        
         // Making navigation buttons white
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         return true
