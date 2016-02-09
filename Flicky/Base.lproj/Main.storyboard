@@ -27,11 +27,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="123" id="cSn-DF-Dbv" customClass="MovieCell" customModule="Flicky" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" rowHeight="123" id="cSn-DF-Dbv" customClass="MovieCell" customModule="Flicky" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="320" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cSn-DF-Dbv" id="8h6-xo-nSv">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="123"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kkn-Gg-f1R">
@@ -44,7 +44,7 @@
                                                     <rect key="frame" x="14" y="8" width="65" height="95.5"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slK-H1-oew">
-                                                    <rect key="frame" x="92" y="26" width="214" height="77.5"/>
+                                                    <rect key="frame" x="92" y="26" width="202" height="77.5"/>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -56,6 +56,7 @@
                                             <outlet property="overviewLabel" destination="slK-H1-oew" id="MJ9-D4-S4J"/>
                                             <outlet property="posterView" destination="tyL-o8-idK" id="RX1-WN-QYU"/>
                                             <outlet property="titleLabel" destination="kkn-Gg-f1R" id="b0X-PA-GSr"/>
+                                            <segue destination="Nbt-4b-sfi" kind="push" id="Mmn-ys-u8c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -110,6 +111,53 @@
                 <tapGestureRecognizer id="7sT-ye-Eb5"/>
             </objects>
             <point key="canvasLocation" x="661" y="321"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="EOs-i8-8Vw">
+            <objects>
+                <viewController id="Nbt-4b-sfi" customClass="DetailsViewController" customModule="Flicky" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YgJ-80-q22"/>
+                        <viewControllerLayoutGuide type="bottom" id="csN-cQ-QIi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BKu-TF-5E8">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tzk-I7-trM">
+                                <rect key="frame" x="0.0" y="-66" width="320" height="570"/>
+                            </imageView>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AgE-Gr-4Yx">
+                                <rect key="frame" x="0.0" y="262" width="320" height="242"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tzg-4u-6UY">
+                                        <rect key="frame" x="8" y="8" width="304" height="28"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="20"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Overview/Synopsis" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qZ-dQ-APk">
+                                        <rect key="frame" x="8" y="53" width="304" height="189"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="k5J-Ep-6dK"/>
+                    <connections>
+                        <outlet property="overviewLabel" destination="6qZ-dQ-APk" id="cac-3N-rgx"/>
+                        <outlet property="posterImageView" destination="Tzk-I7-trM" id="eru-dC-Pf9"/>
+                        <outlet property="titleLabel" destination="Tzg-4u-6UY" id="RLv-8k-Gss"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Xj-JP-pl7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940" y="1057"/>
         </scene>
         <!--Flicky-->
         <scene sceneID="qeh-jR-feZ">
@@ -195,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j2h-7o-qDB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1031" y="321"/>
+            <point key="canvasLocation" x="1211" y="321"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yzU-EH-zsT">
