@@ -26,7 +26,31 @@ class DetailsViewController: UIViewController {
         let overview = movie["overview"] as? String
         overviewLabel.text = overview
         
-        print(movie)
+        let baseUrl = "http://image.tmdb.org/t/p/w300"
+        if let posterPath = movie["poster_path"] as? String {
+            let imageUrl = NSURL(string: baseUrl + posterPath)
+            let imageRequest = NSURLRequest(URL: imageUrl!)
+            
+            // Fading in the image!
+            posterImageView.setImageWithURLRequest(imageRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) -> Void in
+                if imageResponse != nil {
+                    print("Image was not cached, fade in image")
+                    self.posterImageView.alpha = 0.0
+                    self.posterImageView.image = image
+                    UIView.animateWithDuration(0.3, animations: { () -> Void in
+                   self.posterImageView.alpha = 1.0
+                    })
+                } else {
+                    print("Image was cached so just update the image")
+                    self.posterImageView.image = image
+                }
+                },
+                failure: { (imageRequest, imageResponse, error) -> Void in
+                    // if we have a network error ... show nothing?
+            })
+        }
+        
+
         // Do any additional setup after loading the view.
     }
 
