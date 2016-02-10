@@ -53,8 +53,6 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 Making the progress bar work was quite an adventure as there were no examples written in Swift 2.0. I initially came up with [this](https://github.com/venegu/flicky#progress-bars-1) naive implementation after some Googling, but it didn't quite do what I wanted it to do and was better suited for a launch screen (because it was centered and I was confused T_T). I spent some time trying to understand the progress view and decided that it would be rad if it filled as the app was receiving the data it was fetching so I tried to follow [this](http://www.devfright.com/ios-data-download-progress-bar-tutorial/) example written in Objective-C and [re-wrote it in Swift](https://github.com/venegu/progressExample). Turned out that the way it was done in the DevFright tutorial (using `NSURLConnection`) is not supported in iOS 9.0! So I found some [more resources](https://github.com/venegu/flicky#progress-bars) regarding `NSURLSession` and went ahead and did it for Flicky directly. It was simple to port over, but when the app loaded the progress bar would fill immediately. Initially I thought that it was not working, but then I decided to check the size of the data the app was receiving and then try to run the same code but fetch an image instead (that was much bigger than the data Flicky was receiving). When fetching the image the progress bar displayed and animated as expected which was neat, but for my data it would just fill immediately. With several time constraints, I decided to just go back to my initial naive way to do it, but went ahead and made it "look" nicer and slightly more functional/sensible.
 
-For the life of me I could not get a gesture to work on the error message IUView. Please send help. :panda_face:
-
 ## Resources
 
    - http://rest.elkstein.org
@@ -98,6 +96,9 @@ For the life of me I could not get a gesture to work on the error message IUView
    - http://www.developerdave.co.uk/2014/10/gradient-backgrounds-swift/
 
    - http://blog.apoorvmote.com/gradient-background-uiview-ios-9-swift/
+
+### Bottom Bar
+   - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instp/UIViewController/hidesBottomBarWhenPushed
 
 ## Learning Notes
 
@@ -220,7 +221,7 @@ The following **required** functionality is completed:
 
 - [x] User can view movie details by tapping on a cell.
 - [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
-- [ ] Customize the selection effect of the cell.
+- [x] Customize the selection effect of the cell.
 
 The following **optional** features are implemented:
 

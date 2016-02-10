@@ -182,6 +182,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
+        // Setting table cell color on selection
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.blackColor()
+        cell.selectedBackgroundView = backgroundView
+        
         let movie = filteredMovies![indexPath.row]
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
@@ -270,7 +275,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let detailViewController = segue.destinationViewController as! DetailsViewController
         detailViewController.movie = movie
         
-        // Hiding tab bar when the is pushed to the detailViewController 
+        // Hiding tab bar when the is pushed to the detailViewController
         detailViewController.hidesBottomBarWhenPushed = true
     }
 
