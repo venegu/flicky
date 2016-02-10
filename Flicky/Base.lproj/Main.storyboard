@@ -57,7 +57,7 @@
                                             <outlet property="overviewLabel" destination="slK-H1-oew" id="MJ9-D4-S4J"/>
                                             <outlet property="posterView" destination="tyL-o8-idK" id="RX1-WN-QYU"/>
                                             <outlet property="titleLabel" destination="kkn-Gg-f1R" id="b0X-PA-GSr"/>
-                                            <segue destination="Nbt-4b-sfi" kind="push" id="Mmn-ys-u8c"/>
+                                            <segue destination="Nbt-4b-sfi" kind="push" identifier="forDetailsView" id="Mmn-ys-u8c"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -99,10 +99,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flicky" id="axy-op-fmS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="fastForward" id="Kl1-Eo-Jh1">
+                        <barButtonItem key="leftBarButtonItem" systemItem="fastForward" id="Kl1-Eo-Jh1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="dRx-rd-lWe" kind="push" id="QX8-nn-L0b"/>
+                                <segue destination="dRx-rd-lWe" kind="push" identifier="forCollectionView" id="QX8-nn-L0b"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

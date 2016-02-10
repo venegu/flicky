@@ -268,15 +268,20 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
         
-        let detailViewController = segue.destinationViewController as! DetailsViewController
-        detailViewController.movie = movie
+        // Determining which view is being navigated to in order to provide correct info
+        if(segue.identifier == "forDetailsView"){
         
-        // Hiding tab bar when the is pushed to the detailViewController
-        detailViewController.hidesBottomBarWhenPushed = true
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let movie = movies![indexPath!.row]
+        
+            let detailViewController = segue.destinationViewController as! DetailsViewController
+            detailViewController.movie = movie
+        
+            // Hiding tab bar when the is pushed to the detailViewController
+            detailViewController.hidesBottomBarWhenPushed = true
+        }
     }
 
 
