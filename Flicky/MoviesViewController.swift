@@ -269,6 +269,9 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         let detailViewController = segue.destinationViewController as! DetailsViewController
         detailViewController.movie = movie
+        
+        // Hiding tab bar when the is pushed to the detailViewController 
+        detailViewController.hidesBottomBarWhenPushed = true
     }
 
 
