@@ -23,6 +23,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // Making search bar black ???
         searchBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 15)
         searchBar.barTintColor = UIColor.blackColor()
@@ -233,21 +234,31 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        filteredMovies = movies
         self.collectionView.reloadData()
     }
 
-
     
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        // Determining which view is being navigated to in order to provide correct info
+        if(segue.identifier == "forDetailsView"){
+            
+            let cell = sender as! UICollectionViewCell
+            let indexPath = collectionView.indexPathForCell(cell)
+            let movie = filteredMovies![indexPath!.row]
+            
+            let detailViewController = segue.destinationViewController as! DetailsViewController
+            detailViewController.movie = movie
+            
+            // Hiding tab bar when the is pushed to the detailViewController
+            detailViewController.hidesBottomBarWhenPushed = true
+        }
     }
-    */
+    
 
 }
