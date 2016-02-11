@@ -243,12 +243,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             return (movieDictionary["title"] as! String).rangeOfString(searchText, options: .CaseInsensitiveSearch) != nil
         })
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     // Displaying cancel button
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
+        searchBar.showsCancelButton = true
     }
     
     // Returning intial data back to table view & resigning first responder when cancel is clicked
@@ -256,8 +256,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        filteredMovies = movies
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 
     
@@ -274,7 +273,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
-            let movie = movies![indexPath!.row]
+            let movie = filteredMovies![indexPath!.row]
         
             let detailViewController = segue.destinationViewController as! DetailsViewController
             detailViewController.movie = movie
