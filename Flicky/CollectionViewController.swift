@@ -178,24 +178,50 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CollectionCell", forIndexPath: indexPath) as! CollectionCell
         let movie = filteredMovies![indexPath.row]
         
-        let baseUrl = "http://image.tmdb.org/t/p/w300"
         if let posterPath = movie["poster_path"] as? String {
-            let imageUrl = NSURL(string: baseUrl + posterPath)
-            let imageRequest = NSURLRequest(URL: imageUrl!)
+            
+            let smallImageUrl = "https://image.tmdb.org/t/p/w45"
+            let largeImageUrl = "https://image.tmdb.org/t/p/original"
+            
+            let smallImageRequest = NSURLRequest(URL: NSURL(string: smallImageUrl + posterPath)!)
+            let largeImageRequest = NSURLRequest(URL: NSURL(string: largeImageUrl + posterPath)!)
             
             // Fading in the image!
-            cell.movieView.setImageWithURLRequest(imageRequest, placeholderImage: nil, success: { (imageRequest, imageResponse, image) -> Void in
-                if imageResponse != nil {
+            cell.movieView.setImageWithURLRequest(smallImageRequest, placeholderImage: nil, success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
+                if smallImageResponse != nil {
                     print("Image was not cached, fade in image")
                     cell.movieView.alpha = 0.0
-                    cell.movieView.image = image
+                    cell.movieView.image = smallImage
                     UIView.animateWithDuration(0.3, animations: { () -> Void in
                         cell.movieView.alpha = 1.0
                     })
                 } else {
                     print("Image was cached so just update the image")
-                    cell.movieView.image = image
+                    cell.movieView.image = smallImage
                 }
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    
+                    cell.movieView.alpha = 1.0
+                    
+                    }, completion: { (sucess) -> Void in
+                        
+                        // The AFNetworking ImageView Category only allows one request to be sent at a time
+                        // per ImageView. This code must be in the completion block.
+                        cell.movieView.setImageWithURLRequest(
+                            largeImageRequest,
+                            placeholderImage: smallImage,
+                            success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                                
+                                cell.movieView.image = largeImage;
+                                
+                            },
+                            failure: { (request, response, error) -> Void in
+                                // do something for the failure condition of the large image request
+                                // possibly setting the ImageView's image to a default image
+                        })
+                })
+                
                 },
                 failure: { (imageRequest, imageResponse, error) -> Void in
                     // if we have a network error ... show nothing?
@@ -207,6 +233,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.movieView.image = nil
             
         }
+
         
         return cell
     }
