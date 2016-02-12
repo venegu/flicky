@@ -100,6 +100,15 @@ Making the progress bar work was quite an adventure as there were no examples wr
 ### Bottom Bar
    - https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/index.html#//apple_ref/occ/instp/UIViewController/hidesBottomBarWhenPushed
 
+### Tab Bar Controller
+   - http://stackoverflow.com/questions/31548909/swift-how-do-i-add-tab-bar-and-navigation-bar-to-a-single-view-controller
+
+   - http://www.appcoda.com/custom-segue-animations/
+
+   - http://www.raywenderlich.com/113388/storyboards-tutorial-in-ios-9-part-1
+
+   - http://stackoverflow.com/questions/29264464/xcode-6-swift-custom-tabbar-with-navigation
+
 ## Learning Notes
 
 ### Tables
