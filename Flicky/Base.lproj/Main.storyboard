@@ -99,7 +99,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Flicky" id="axy-op-fmS">
-                        <barButtonItem key="leftBarButtonItem" systemItem="fastForward" id="Kl1-Eo-Jh1">
+                        <barButtonItem key="leftBarButtonItem" image="square3.png" id="Kl1-Eo-Jh1">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="dRx-rd-lWe" kind="push" identifier="forCollectionView" id="QX8-nn-L0b"/>
@@ -286,9 +286,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="square3.png" width="30" height="30"/>
         <image name="wifiError.png" width="100" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="H1w-Fo-R6J"/>
+        <segue reference="Mmn-ys-u8c"/>
     </inferredMetricsTieBreakers>
 </document>
