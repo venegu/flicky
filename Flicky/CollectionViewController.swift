@@ -285,6 +285,11 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             
             // Hiding tab bar when the is pushed to the detailViewController
             detailViewController.hidesBottomBarWhenPushed = true
+            
+            //Back button
+            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "")
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "")
+
         }
     }
     

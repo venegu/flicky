@@ -23,17 +23,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button).
 - [x] Gradient background of black => gray.
-- [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies.
-- [ ] Add a view (__Watch List__) where the user can add movies they would like to watch. **How will I save this personalized data?**
-- [ ] Animation when flipping between the different views mentioned previously.
-- [ ] Use long press in any view to add a movie to the __Watch List__ (aka gestures~!).
-- [ ] Custom movie/theater related icons, buttons & launch screen.
-- [ ] Use [WebView](http://stackoverflow.com/questions/31762450/ios-in-app-browser) to allow users to see more information about a movie in an online movie site and potentially purchase tickets (but who does that on a phone #_#).
-- [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?)).
-- [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time).
-- [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used.
 - [x] Reload view on tap of error message.
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
@@ -52,6 +42,72 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 Making the progress bar work was quite an adventure as there were no examples written in Swift 2.0. I initially came up with [this](https://github.com/venegu/flicky#progress-bars-1) naive implementation after some Googling, but it didn't quite do what I wanted it to do and was better suited for a launch screen (because it was centered and I was confused T_T). I spent some time trying to understand the progress view and decided that it would be rad if it filled as the app was receiving the data it was fetching so I tried to follow [this](http://www.devfright.com/ios-data-download-progress-bar-tutorial/) example written in Objective-C and [re-wrote it in Swift](https://github.com/venegu/progressExample). Turned out that the way it was done in the DevFright tutorial (using `NSURLConnection`) is not supported in iOS 9.0! So I found some [more resources](https://github.com/venegu/flicky#progress-bars) regarding `NSURLSession` and went ahead and did it for Flicky directly. It was simple to port over, but when the app loaded the progress bar would fill immediately. Initially I thought that it was not working, but then I decided to check the size of the data the app was receiving and then try to run the same code but fetch an image instead (that was much bigger than the data Flicky was receiving). When fetching the image the progress bar displayed and animated as expected which was neat, but for my data it would just fill immediately. With several time constraints, I decided to just go back to my initial naive way to do it, but went ahead and made it "look" nicer and slightly more functional/sensible.
+
+## License
+
+    Copyright [2016] [Lisa Maldonado]
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+
+# Project 2 - *Flicky*
+
+**Flicky** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
+
+Time spent: **5** hours spent in total
+
+## User Stories
+
+The following **required** functionality is completed:
+
+- [x] User can view movie details by tapping on a cell.
+- [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
+- [x] Customize the selection effect of the cell.
+
+The following **optional** features are implemented:
+
+- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
+- [x] Customize the navigation bar.
+
+The following **additional** features are implemented:
+
+- [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button).
+- [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies.
+- [ ] Add a view (__Watch List__) where the user can add movies they would like to watch. **How will I save this personalized data?**
+- [ ] Animation when flipping between the different views mentioned previously.
+- [ ] Use long press in any view to add a movie to the __Watch List__ (aka gestures~!).
+- [ ] Custom movie/theater related icons, buttons & launch screen.
+- [ ] Use [WebView](http://stackoverflow.com/questions/31762450/ios-in-app-browser) to allow users to see more information about a movie in an online movie site and potentially purchase tickets (but who does that on a phone #_#).
+- [ ] Shake for a random movie suggestion? (If just suggesting a movie that is currently playing this should be fine - 1 network call. Otherwise, it may be 4 network calls (?)).
+- [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time).
+- [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used.
+
+Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
+
+1.
+2.
+
+## Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://i.imgur.com/link/to/your/gif/flicky2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+## Notes
+
+Describe any challenges encountered while building the app.
 
 ## Resources
 
@@ -108,6 +164,11 @@ Making the progress bar work was quite an adventure as there were no examples wr
    - http://www.raywenderlich.com/113388/storyboards-tutorial-in-ios-9-part-1
 
    - http://stackoverflow.com/questions/29264464/xcode-6-swift-custom-tabbar-with-navigation
+
+### Back Bar Button
+   - http://stackoverflow.com/questions/24769770/swift-setting-back-button-image-in-nav-bar
+
+   - https://medium.com/@deepdeviant/how-to-make-custom-uinavigationcontroller-back-button-image-without-title-swift-7ea5673d7e03#.mcvf2kfnd
 
 ## Learning Notes
 
@@ -200,63 +261,6 @@ Making the progress bar work was quite an adventure as there were no examples wr
 
    - Call them appropriately?
 
-
-## License
-
-    Copyright [2016] [Lisa Maldonado]
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-        http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-
-# Project 2 - *Flicky*
-
-**Flicky** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
-
-Time spent: **X** hours spent in total
-
-## User Stories
-
-The following **required** functionality is completed:
-
-- [x] User can view movie details by tapping on a cell.
-- [x] User can select from a tab bar for either **Now Playing** or **Top Rated** movies.
-- [x] Customize the selection effect of the cell.
-
-The following **optional** features are implemented:
-
-- [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
-- [x] Customize the navigation bar.
-
-The following **additional** features are implemented:
-
-- [ ] List anything else that you can get done to improve the app functionality!
-
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1.
-2.
-
-## Video Walkthrough
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://i.imgur.com/link/to/your/gif/flicky2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## License
 
