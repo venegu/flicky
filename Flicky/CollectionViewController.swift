@@ -261,7 +261,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
-        self.collectionView.reloadData()
+        filteredMovies = movies
+        collectionView.reloadData()
     }
 
     
