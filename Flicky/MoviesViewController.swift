@@ -294,7 +294,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         // Determining which view is being navigated to in order to provide correct info
-        if(segue.identifier == "forDetailsView"){
+        if(segue.identifier == "forDetailsView") {
         
             let cell = sender as! UITableViewCell
             let indexPath = tableView.indexPathForCell(cell)
@@ -305,6 +305,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
             // Hiding tab bar when the is pushed to the detailViewController
             detailViewController.hidesBottomBarWhenPushed = true
+        }
+        if(segue.identifier == "forCollectionView") {
+            // Back button
+            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backBtn3")
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backBtn3")
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         }
     }
 
