@@ -32,6 +32,8 @@ class DetailsViewController: UIViewController {
         
         overviewLabel.sizeToFit()
         
+        // Fixing scroll over when overlapping kindof
+        infoView.frame.size.height = 45 + overviewLabel.frame.size.height
         scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         
         let baseUrl = "http://image.tmdb.org/t/p/w500"
