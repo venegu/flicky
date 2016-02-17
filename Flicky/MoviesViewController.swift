@@ -254,6 +254,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         return cell
     }
     
+    // Deselecting selected table view item
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+    
     // Function run when user refreshes
     func refreshControlAction(refreshControl: UIRefreshControl) {
         startProgress()
