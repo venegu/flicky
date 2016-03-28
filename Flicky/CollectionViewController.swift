@@ -8,7 +8,9 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class CollectionViewController: UIViewController {
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -24,11 +26,10 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         super.viewDidLoad()
         
         
-        // Making search bar black ???
+        // Making search bar black
         searchBar.frame = CGRectMake(0, 20, self.view.frame.size.width, 15)
         searchBar.barTintColor = UIColor.blackColor()
         searchBar.barStyle = UIBarStyle.Black
-        
         
         // Gradient
         let color1 = UIColor.blackColor()
@@ -79,7 +80,8 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    // Makes request and fetches necessary data from Movie API
+    // MARK: - Network Call
+    
     func networkCall() {
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string: "https://api.themoviedb.org/3/movie/now_playing?api_key=\(apiKey)")
@@ -115,11 +117,7 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         task.resume()
     }
     
-    // Response to network alert view tap gesture to make another network call
-    func handleTap() {
-        print("tapped")
-        networkCall()
-    }
+    // MARK: - Progress Bar Functions
     
     // Starting fake progress bar
     func startProgress() {
@@ -144,7 +142,6 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     }
     
     // After data is fetched completing the fake progress bar
-    // such animated much fake :'(
     func completedProgress(dataFetched : Bool?) {
         self.hideNetworkAlert()
         timer!.invalidate()
@@ -157,6 +154,14 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         }
     }
     
+    // MARK: - Network Alert Functions
+    
+    // Response to network alert view tap gesture to make another network call
+    func handleTap() {
+        print("tapped")
+        networkCall()
+    }
+    
     func showNetworkAlert() {
         self.networkAlertView.hidden = false
     }
@@ -164,6 +169,49 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
     func hideNetworkAlert() {
         self.networkAlertView.hidden = true
     }
+    
+    // MARK: - Refresh Action
+    
+    // Function run when user refreshes
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        startProgress()
+        networkCall()
+        refreshControl.endRefreshing()
+    }
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        // Determining which view is being navigated to in order to provide correct info
+        if(segue.identifier == "forDetailsView"){
+            
+            let cell = sender as! UICollectionViewCell
+            let indexPath = collectionView.indexPathForCell(cell)
+            let movie = filteredMovies![indexPath!.row]
+            
+            let detailViewController = segue.destinationViewController as! DetailsViewController
+            detailViewController.movie = movie
+            
+            // Hiding tab bar when the is pushed to the detailViewController
+            detailViewController.hidesBottomBarWhenPushed = true
+            
+            //Back button
+            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "")
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "")
+
+        }
+    }
+    
+}
+
+
+// MARK: - UICollectionViewDataSource & UICollectionViewDelegate
+
+extension CollectionViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let filteredMovies = filteredMovies {
@@ -233,17 +281,15 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
             cell.movieView.image = nil
             
         }
-
         
         return cell
     }
-    
-    // Function run when user refreshes
-    func refreshControlAction(refreshControl: UIRefreshControl) {
-        startProgress()
-        networkCall()
-        refreshControl.endRefreshing()
-    }
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension CollectionViewController: UISearchBarDelegate {
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         filteredMovies = searchText.isEmpty ? movies : movies!.filter({(movieDictionary: NSDictionary) -> Bool in
@@ -264,34 +310,5 @@ class CollectionViewController: UIViewController, UICollectionViewDataSource, UI
         filteredMovies = movies
         collectionView.reloadData()
     }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        // Determining which view is being navigated to in order to provide correct info
-        if(segue.identifier == "forDetailsView"){
-            
-            let cell = sender as! UICollectionViewCell
-            let indexPath = collectionView.indexPathForCell(cell)
-            let movie = filteredMovies![indexPath!.row]
-            
-            let detailViewController = segue.destinationViewController as! DetailsViewController
-            detailViewController.movie = movie
-            
-            // Hiding tab bar when the is pushed to the detailViewController
-            detailViewController.hidesBottomBarWhenPushed = true
-            
-            //Back button
-            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "")
-            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "")
-
-        }
-    }
-    
 
 }

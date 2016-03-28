@@ -26,11 +26,6 @@ The following **additional** features are implemented:
 - [x] Gradient background of black => gray.
 - [x] Reload view on tap of error message.
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1.
-2.
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
@@ -79,7 +74,7 @@ The following **optional** features are implemented:
 - [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
 - [x] Customize the navigation bar.
 
-The following **additional** features are implemented:
+The following **additional** features will be implemented in the future:
 
 - [ ] Tap top/bar area to scroll up the table view (similar to a back to top button on a website w/o the button).
 - [ ] Bottom bar with buttons for other views that display __Now Playing__, __Top Rated__, __Upcoming__, __Popular__, __Watch List__ movies.
@@ -92,22 +87,13 @@ The following **additional** features are implemented:
 - [ ] [iPhone app tour](http://stackoverflow.com/questions/13335540/how-to-make-first-launch-iphone-app-tour-guide-with-xcode) for the [first launch](http://stackoverflow.com/questions/19376201/ios-first-launch-tour-detecting-if-the-app-is-launched-for-the-first-time).
 - [ ] Rotten tomato ratings and reviews as well as reviews offered by the API currently used.
 
-Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
-
-1.
-2.
-
 ## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://github.com/venegu/flicky/raw/master/flicky2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/venegu/flicky/raw/master/flicky2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />  <img src='https://github.com/venegu/flicky/raw/master/flicky5.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
-
-## Notes
-
-Describe any challenges encountered while building the app.
 
 ## Resources
 
@@ -221,50 +207,9 @@ Describe any challenges encountered while building the app.
 ### Progress Bars
    - It turns out that although we are getting a lot of data - it is not enough to have an "actual" progress bar because it fetches all the data in one fell swoop, thus it doesn't show the progress bar animation when using `NSURLSession` methods (it will jump to 100%). In order to have a "progress bar load" effect I will need to create a progress bar, incrementally increment it to a specific point (maybe halfway), fetch the data, then finally finish animating the filling of rest of the bar.
 
-   - Initialize the progress and a timer inside the ViewController class:
-   ```swift
-   var progressView: UIProgressView?
-   var timer: NSTimer?
-
-   ```
-
-   - Have a function that creates the progress view:
-   ```swift
-   func startProgress() {
-        progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
-        progressView!.transform = CGAffineTransformScale(progressView!.transform, 2, 1)
-        progressView?.center = self.view.center
-        progressView!.trackTintColor = UIColor.grayColor()
-        progressView!.progressTintColor = UIColor.blackColor()
-        view.addSubview(progressView!)
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: "updateProgress", userInfo: nil, repeats: true)
-    }
-   ```
-   - Have another function that updates the progress bar:
-   ```swift
-   func updateProgress() {
-        if progressView?.progress <= 0.90 {
-            progressView?.progress += 0.05
-        }
-        let progressValue = self.progressView?.progress
-    }
-    ```
-   - Lastly, have a function that finishes off after the data is loaded:
-   ```swift
-   func completedProgress() {
-        if progressView?.progress == 0.90 {
-            progressView?.progress += 0.05
-        }
-        let progressValue = self.progressView?.progress
-    }
-    ```
-
-   - Call them appropriately?
-
-
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2016] [Lisa Maldonado]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

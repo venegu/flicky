@@ -9,7 +9,7 @@
 import UIKit
 import AFNetworking
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class MoviesViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -79,6 +79,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Network Call
     
     // Makes request and fetches necessary data from Movie API
     func networkCall() {
@@ -116,11 +117,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         task.resume()
     }
     
-    // Response to network alert view tap gesture to make another network call
-    func handleTap() {
-        print("tapped")
-        networkCall()
-    }
+    // MARK: - Progress Bar Functions
     
     // Starting fake progress bar
     func startProgress() {
@@ -158,6 +155,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    // MARK: - Network Alert Functions
+    
+    // Response to network alert view tap gesture to make another network call
+    func handleTap() {
+        print("tapped")
+        networkCall()
+    }
+    
     // Hiding and showing network alert view
     func showNetworkAlert() {
         self.networkAlertView.hidden = false
@@ -166,19 +171,64 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func hideNetworkAlert() {
         self.networkAlertView.hidden = true
     }
+
+    // MARK: - Refresh Action Functions
+    
+    // Function run when user refreshes
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        startProgress()
+        networkCall()
+        refreshControl.endRefreshing()
+    }
+
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        
+        // Determining which view is being navigated to in order to provide correct info
+        if(segue.identifier == "forDetailsView") {
+        
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cell)
+            let movie = filteredMovies![indexPath!.row]
+        
+            let detailViewController = segue.destinationViewController as! DetailsViewController
+            detailViewController.movie = movie
+        
+            // Hiding tab bar when the is pushed to the detailViewController
+            detailViewController.hidesBottomBarWhenPushed = true
+        }
+        if(segue.identifier == "forCollectionView") {
+            // Back button
+            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backBtn3")
+            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backBtn3")
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
+        }
+    }
+
+
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+
+extension MoviesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
         if let filteredMovies = filteredMovies {
             return filteredMovies.count
-        
+            
         } else {
             return 0
         }
-    
+        
     }
     
-    // Table View Fu
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MovieCell", forIndexPath: indexPath) as! MovieCell
         
@@ -239,10 +289,10 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                 failure: { (imageRequest, imageResponse, error) -> Void in
                     // if we have a network error ... show nothing?
             })
-
+            
             
         } else {
-            // no image 
+            // no image
             cell.posterView.image = nil
             
         }
@@ -258,14 +308,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
-    
-    // Function run when user refreshes
-    func refreshControlAction(refreshControl: UIRefreshControl) {
-        startProgress()
-        networkCall()
-        refreshControl.endRefreshing()
-    }
-    
+
+}
+
+// MARK: - UISearchBarDelegate
+
+extension MoviesViewController: UISearchBarDelegate {
     
     // Searching for items related to search and displaying those
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
@@ -289,36 +337,5 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         filteredMovies = movies
         tableView.reloadData()
     }
-
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
-        
-        // Determining which view is being navigated to in order to provide correct info
-        if(segue.identifier == "forDetailsView") {
-        
-            let cell = sender as! UITableViewCell
-            let indexPath = tableView.indexPathForCell(cell)
-            let movie = filteredMovies![indexPath!.row]
-        
-            let detailViewController = segue.destinationViewController as! DetailsViewController
-            detailViewController.movie = movie
-        
-            // Hiding tab bar when the is pushed to the detailViewController
-            detailViewController.hidesBottomBarWhenPushed = true
-        }
-        if(segue.identifier == "forCollectionView") {
-            // Back button
-            self.navigationController?.navigationBar.backIndicatorImage = UIImage(named: "backBtn3")
-            self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = UIImage(named: "backBtn3")
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
-        }
-    }
-
 
 }

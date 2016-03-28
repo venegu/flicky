@@ -8,14 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		28176CFC1C61A46A0058CA7E /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28176CFB1C61A46A0058CA7E /* CollectionViewController.swift */; };
-		281F3FBC1C66EEF10052B48D /* wifiError.png in Resources */ = {isa = PBXBuildFile; fileRef = 281F3FBB1C66EEF10052B48D /* wifiError.png */; };
 		283466881C5C59C000FF51BB /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283466871C5C59C000FF51BB /* MovieCell.swift */; };
 		285E22261C62FC9A00406CE6 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285E22251C62FC9A00406CE6 /* CollectionCell.swift */; };
 		286E90271C6A9A9C00BA92A3 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286E90261C6A9A9C00BA92A3 /* DetailsViewController.swift */; };
-		28D325971C6FF48300C93C16 /* square.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D325961C6FF48300C93C16 /* square.png */; };
-		28D3259B1C6FF4AE00C93C16 /* square3.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D3259A1C6FF4AE00C93C16 /* square3.png */; };
-		28D325A91C70305300C93C16 /* award6.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D325A81C70305300C93C16 /* award6.png */; };
-		28D325AD1C70358700C93C16 /* theater2.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D325AC1C70358700C93C16 /* theater2.png */; };
 		28F2A3181C5922E800706F42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A3171C5922E800706F42 /* AppDelegate.swift */; };
 		28F2A31D1C5922E800706F42 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31B1C5922E800706F42 /* Main.storyboard */; };
 		28F2A31F1C5922E800706F42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28F2A31E1C5922E800706F42 /* Assets.xcassets */; };
@@ -26,14 +21,9 @@
 
 /* Begin PBXFileReference section */
 		28176CFB1C61A46A0058CA7E /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		281F3FBB1C66EEF10052B48D /* wifiError.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wifiError.png; sourceTree = "<group>"; };
 		283466871C5C59C000FF51BB /* MovieCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
 		285E22251C62FC9A00406CE6 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		286E90261C6A9A9C00BA92A3 /* DetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
-		28D325961C6FF48300C93C16 /* square.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square.png; sourceTree = "<group>"; };
-		28D3259A1C6FF4AE00C93C16 /* square3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = square3.png; sourceTree = "<group>"; };
-		28D325A81C70305300C93C16 /* award6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = award6.png; sourceTree = "<group>"; };
-		28D325AC1C70358700C93C16 /* theater2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = theater2.png; sourceTree = "<group>"; };
 		28F2A3141C5922E800706F42 /* Flicky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28F2A3171C5922E800706F42 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28F2A31C1C5922E800706F42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,11 +93,6 @@
 				28F2A3171C5922E800706F42 /* AppDelegate.swift */,
 				28F2A31B1C5922E800706F42 /* Main.storyboard */,
 				28F2A31E1C5922E800706F42 /* Assets.xcassets */,
-				28D325AC1C70358700C93C16 /* theater2.png */,
-				28D325A81C70305300C93C16 /* award6.png */,
-				281F3FBB1C66EEF10052B48D /* wifiError.png */,
-				28D3259A1C6FF4AE00C93C16 /* square3.png */,
-				28D325961C6FF48300C93C16 /* square.png */,
 				28F2A3201C5922E800706F42 /* LaunchScreen.storyboard */,
 				28F2A3231C5922E800706F42 /* Info.plist */,
 			);
@@ -194,12 +179,7 @@
 			files = (
 				28F2A3221C5922E800706F42 /* LaunchScreen.storyboard in Resources */,
 				28F2A31F1C5922E800706F42 /* Assets.xcassets in Resources */,
-				28D3259B1C6FF4AE00C93C16 /* square3.png in Resources */,
-				28D325971C6FF48300C93C16 /* square.png in Resources */,
-				281F3FBC1C66EEF10052B48D /* wifiError.png in Resources */,
 				28F2A31D1C5922E800706F42 /* Main.storyboard in Resources */,
-				28D325A91C70305300C93C16 /* award6.png in Resources */,
-				28D325AD1C70358700C93C16 /* theater2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
